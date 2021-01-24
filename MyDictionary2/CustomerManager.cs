@@ -4,10 +4,12 @@ using System.Text;
 
 namespace MyDictionary2
 {
-    public class CustomerManager
+    class CustomerManager
     {
-        public int i = 0;
-        public string ans;
+         int i = 0;
+         string ans;
+         int id ;
+         int index;
 
 
 
@@ -39,14 +41,102 @@ namespace MyDictionary2
 
             } while (ans == "E");
 
-            
+
 
         }
 
-        public void Find(MyDictionary<int, Customer> myDictionary)
+        public void List(MyDictionary<int, Customer> myDictionary) 
         {
 
+            Console.Write("ID\t\tADI\t\tSOYADI\t\t\n");
+            Console.WriteLine("----------------------------------------------");
+
+
+            foreach (var cst in myDictionary._value)
+            {
+                Console.Write(cst.Id + "\t\t" + cst.Name + "\t\t" + cst.SurName + "\n");
+            }
+        }
+
+
+
+        public void Find(MyDictionary<int, Customer> myDictionary)
+        {
+            do
+            {
+
             Console.WriteLine("Bulmak istediğiniz kişinin id sini giriniz");
+            id = Convert.ToInt32( Console.ReadLine());
+
+           
+
+            for (int i = 0; i < myDictionary._key.Count; i++)
+
+            {
+                if (id == myDictionary._key[i])
+                {
+
+                    index = i;
+
+                }
+
+            }
+
+
+            Console.Write("ID\t\tADI\t\tSOYADI\t\t\n");
+            Console.WriteLine("----------------------------------------------");
+
+            Console.Write(myDictionary._value[index].Id+"\t\t"+myDictionary._value[index].Name+"\t\t"+myDictionary._value[index].SurName+"\n");
+
+            Console.WriteLine("Başka arama yapmak istermisiniz...(Evet=E  Hayır=H)");
+            ans = Console.ReadLine();
+
+
+            } while (ans == "E");
+
+
+        }
+
+        public void Delete(MyDictionary<int, Customer> myDictionary) 
+        {
+            do
+            {
+
+                Console.WriteLine("Silmek istediğiniz kişinin id sini giriniz");
+                id = Convert.ToInt32(Console.ReadLine());
+
+
+
+                for (int i = 0; i < myDictionary._key.Count; i++)
+
+                {
+                    if (id == myDictionary._key[i])
+                    {
+
+                        index = i;
+
+                    }
+
+                }
+
+
+                myDictionary._key.Remove(index);
+                myDictionary._value.RemoveAt(index);
+
+
+                List(myDictionary);
+
+
+
+
+
+
+
+                Console.WriteLine("Başka silme yapmak istermisiniz...(Evet=E  Hayır=H)");
+                ans = Console.ReadLine();
+
+
+            } while (ans == "E");
 
         }
     }

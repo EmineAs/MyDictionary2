@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MyDictionary2
 {
-    public class Customer
+    class Customer
     {
         public int Id { get; set; }
         public string Name { get; set; }

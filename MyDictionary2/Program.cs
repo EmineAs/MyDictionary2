@@ -12,16 +12,10 @@ namespace MyDictionary2
             MyDictionary<int, Customer> myDictionary = new MyDictionary<int, Customer>();
 
             customerManager.Add(myDictionary);
+            customerManager.List(myDictionary);
+            customerManager.Find(myDictionary);
+            customerManager.Delete(myDictionary);
 
-
-            Console.Write("ID\t\tADI\t\tSOYADI\t\t\n");
-            Console.WriteLine("----------------------------------------------");
-
-
-            foreach (var cst in myDictionary._value)
-            {
-                Console.Write(cst.Id + "\t\t" + cst.Name + "\t\t" + cst.SurName + "\n");
-            }
 
 
         }
